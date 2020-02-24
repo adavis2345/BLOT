@@ -1,3 +1,4 @@
+import os
 import plotly.graph_objects as go
 import requests
 from datetime import datetime, timedelta
@@ -12,10 +13,8 @@ import json
 symbol = input("Please enter a stock symbol: ")
 symbol = symbol.upper()
 
-api_token = "63COFDIXH3KOOP1T"
-
 request = requests.get("https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={}"
-                           "&apikey={}".format(symbol, api_token))
+                           "&apikey={}".format(symbol, os.environ['api_token_av']))
 
 symbol_data = request.json()
 
