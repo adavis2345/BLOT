@@ -1,40 +1,40 @@
 from math import log, sqrt, exp
-from decimal import Decimal
-import scipy.stats as stats
 import datetime
+from scipy.stats import norm
 
 #*************************************************************************************************************#
 #1: Newton's Approximation Method for finding Implied Volatility
 #*************************************************************************************************************#
-from scipy.stats import norm
 
-# cp = input("Is this a call or put option: ")
-#
-# #Price of the option
-# V_market = Decimal(input("Please enter the price of the option: "))
-#
+
+cp = input("Is this a call or put option: ")
+
+#Price of the option
+V_market = float(input("Please enter the price of the option: "))
+
 # #Strike Price
-# K = Decimal(input("Please enter the strike price: "))
-#
-# #Amount of days until option expires
+K = int(input("Please enter the strike price: "))
+
+#Amount of days until option expires
 # d = datetime.datetime.now()
 # e = input("Please enter the date that the option is set to expire (mm/dd/yyyy): ")
 # e = datetime.datetime.strptime(e, '%m/%d/%Y')
 # T = (datetime.date(d.year,d.month,d.day) - datetime.date(e.year, e.month, e.day)).days / 365
-#
-# #Actual Stock Price
-# S = Decimal(input("Please enter the current stock price of the option's company: "))
-#
-# #Risk-free rate
-# r = Decimal(input("Please enter the risk-free rate, approximtate the risk-free rate by finding the Treasury bill rate "
-#           "that matures near when the option expires: "))
 
-V_market = 17.5
-K = 585
+#Actual Stock Price
+S = float(input("Please enter the current stock price of the option's company: "))
+
+#Risk-free rate
+r = float(input("Please enter the risk-free rate, approximtate the risk-free rate by finding the Treasury bill rate "
+          "that matures near when the option expires: "))
+
+#V_market = 17.5
+#print(type(V_market))
+#K = 585
 T = (datetime.date(2014,10,18) - datetime.date(2014,9,8)).days / 365.
-S = 586.08
-r = 0.0002
-cp = 'c' # call option
+#S = 586.08
+#r = 0.0002
+# cp = 'c' # call option
 
 n = norm.pdf
 N = norm.cdf
