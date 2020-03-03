@@ -43,7 +43,14 @@ equal_total = new.count('Equal-Weight')
 more = strongBuy_total + buy_total + positive_total + outperform_total + overweight_total
 less = strongSell_total + sell_total + reduce_total + negative_total + neutral_total
 even = (market_total + hold_total + equal_total)/2
-real_total = (more - less + even)/2
+
+if more > less:
+    real_total = (more - less + even) / 2
+elif less > more:
+    real_total = (more - less - even) / 1
+else:
+    real_total = (more - less) / 1
+
 real_total = real_total/100
 real_total = real_total * 100
 
